@@ -58,6 +58,22 @@ function renderScheduler(list) {
 
 renderScheduler(sessions);
 
+const filterButtons = document.querySelectorAll(".speaker-filter button");
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+
+        const filter = button.dataset.filter;
+
+        if (filter === "all") {
+            renderScheduler(sessions);
+        }
+        else {
+            const filteredSessions = sessions.filter((session) => session.type === filter);
+            renderScheduler(filteredSessions);
+        }
+    });
+})
+
 const totalMinutes = sessions.reduce((total, session) => total + session.minutes, 0);
 const hours = Math.floor(totalMinutes / 60);
 const totalminutes = totalMinutes % 60;
@@ -85,3 +101,4 @@ navToggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
     navToggle.setAttribute("aria-expanded", isOpen);
 });
+

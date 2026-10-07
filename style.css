@@ -94,6 +94,16 @@
       outline-offset: 2px;
     }
 
+    .speaker-filter {
+      display: flex;
+      gap: 15px;
+    }
+
+    .speaker-filter button {
+      padding: 10px 25px;
+      width: auto;
+    }
+
     .wrapper,
     main {
       max-width: 68rem;
