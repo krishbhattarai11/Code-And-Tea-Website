@@ -64,3 +64,24 @@ const totalminutes = totalMinutes % 60;
 
 const summary = document.querySelector(".schedule-summary");
 summary.textContent = `${sessions.length}sessions, ${hours}h ${totalminutes}mins from first to last.`;
+
+// console.log(`length of sessions: ${sessions.length}`)
+
+// const talks = sessions.filter((s) => s.type === "talk");
+
+// console.log(`length of talks: ${talks.length}`)
+
+// console.log(talks[0].time);
+// talks[0].time = "10:30";
+// console.log(talks[0].time);
+// console.log(sessions[1].time);
+
+document.documentElement.classList.add("js");
+
+const navToggle = document.querySelector(".nav-toggle");
+const nav = document.querySelector("#primary-nav");
+
+navToggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("is-open");
+    navToggle.setAttribute("aria-expanded", isOpen);
+});
