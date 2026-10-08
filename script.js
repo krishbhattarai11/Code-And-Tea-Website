@@ -102,3 +102,52 @@ navToggle.addEventListener("click", () => {
     navToggle.setAttribute("aria-expanded", isOpen);
 });
 
+// Getting there
+const routes = [
+  { label: "Bus", text: "City buses stop at Patan Dhoka. The hall is a five-minute walk south, past the library." },
+  { label: "Bike", text: "Free, covered bike parking in the courtyard. Bring your own lock." },
+  { label: "On foot", text: "From Mangal Bazaar, walk north for ten minutes. Volunteers in orange will wave." },
+  { label: "Car", text: "There is no parking at the hall. Park at Pulchowk and take a bus or walk." },
+];
+
+const tabList = document.querySelector(".tab-list");
+const tabPanel = document.querySelector(".tab-panel");
+let currentTab = 0;
+
+
+
+const tabs = routes.map((route, index) => {
+    const tab = document.createElement("button");
+    tab.type = "button";
+    tab.textContent= route.label;
+    tab.addEventListener("click", () => showTab(index));
+    return tab;
+});
+
+tabList.append(...tabs);
+const indicator = document.querySelector(".tab-indicator");
+indicator.style.width = `${100 / routes.length}%`;
+
+function showTab(index) {
+    currentTab = index;
+
+    tabs.forEach((tab, i) => {
+        const isCurrent = i === currentTab;
+        tab.setAttribute("aria-pressed",i === currentTab);
+        indicator.style.transform = `translateX(${currentTab * 100}%)`;
+
+    });
+
+    tabPanel.textContent = routes[currentTab].text;
+}
+const routeCount = routes.length;
+document.querySelector(".tab-prev").addEventListener("click",() => {
+    let i= (currentTab -1 + routeCount) % routeCount;
+    showTab(i);
+});
+document.querySelector(".tab-next").addEventListener("click",() => {
+    let i= (currentTab +1) % routeCount;
+    showTab(i);
+});
+
+showTab(0);
