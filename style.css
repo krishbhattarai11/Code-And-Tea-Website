@@ -1,471 +1,523 @@
-    * {
-      box-sizing: border-box;
-    }
+/* Color Palette Variables */
+:root {
+    --ink: #1d2430;
+    /* body text           14.97:1 */
+    --paper: #fdfaf5;
+    /* page background             */
+    --panel: #f3ede4;
+    /* panels, zebra rows          */
+    --tea: #7a3e12;
+    /* headings             7.99:1 */
+    --accent: #b23a0e;
+    /* links, buttons       5.76:1 */
+    --muted: #5c6773;
+    /* secondary text       5.54:1 */
+    --line: #d6dce3;
+    /* hairlines only - never text */
+    --focus: #1c8a9c;
+    --plain: #c9d1da;
+}
 
-    :root {
-      --ink: #1d2430;
-      --paper: #fdfaf5;
-      --panel: #f3ede4;
-      --tea: #7a3e12;
-      --accent: #b23a0e;
-      --muted: #5c6773;
-      --line: #d6dce3;
-      --focus: solid black;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      padding: 0;
-      color: var(--ink);
-      background-color: var(--paper);
+/* Element Selector */
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+}
 
-    }
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
 
-    .skiplink {
-      position: absolute;
-      background-color: black;
-      padding: 0.71rem 1rem;
-      border-radius: 0.5rem;
-      color: #111;
-      top: -4rem;
-      left: 1rem;
-    }
+/* Element Selector by Group */
+h1,
+h2,
+h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.2;
+    color: var(--tea);
+}
 
-    .skiplink:focus {
-      top: 1rem;
-    }
+h1 {
+    font-size: 2.25rem;
+}
 
-    ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
+h2 {
+    font-size: 1.75rem;
+}
 
-    .site-header .wrapper {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 1rem;
-    }
+h3 {
+    font-size: 1.25rem;
+}
 
-    nav a {
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      font-weight: 700;
-    }
+p,
+li {
+    max-width: 65ch;
+}
 
-    nav a:hover {
-      background-color: rgba(255, 255, 255, 0.19);
-      color: var(#fff);
-      border-radius: 8px;
-    }
+a {
+    color: var(--accent);
+}
 
-    h1,
-    h2,
-    h3 {
-      color: var(--tea);
-    }
+:focus-visible {
+    outline: 3px solid var(--focus);
+    /* #1c8a9c; */
+    outline-offset: 3px;
+}
 
-    button {
-      background-color: var(--accent);
-      color: var(--paper);
-    }
+.skiplink {
+    position: absolute;
+    top: -4rem;
+    left: 1rem;
+    background: var(--ink);
+    padding: 0.75rem 1rem;
+    color: #fff;
+    border-radius: 0.5rem;
+}
 
-    p.secondary {
-      color: var(--muted);
-    }
+.skiplink:focus {
+    top: 1rem;
+}
 
-    .card {
-      background-color: var(--panel);
-      border: 1px solid var(--line);
-    }
+/* 1rem = 16px */
+.tagline {
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-style: italic;
+}
 
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
+.role {
+    margin: 0;
+    color: var(--muted);
+}
 
-    :focus-visible {
-      color: var(--focus);
-      background-color: #f0f0f0;
-      outline-offset: 2px;
-    }
+.talk {
+    font-style: italic;
+}
 
-    .speaker-filter {
-      display: flex;
-      gap: 15px;
-    }
+.wrapper,
+main {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
 
-    .speaker-filter button {
-      padding: 10px 25px;
-      width: auto;
-    }
+main>section {
+    padding: 2rem 0;
+}
 
-    .wrapper,
-    main {
-      max-width: 68rem;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
+.site-header {
+    background: var(--ink);
+    color: #fff;
+}
 
-    main>section {
-      padding: 2rem 0;
-    }
+.logo {
+    font-weight: 700;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem;
+}
 
-    .site-header {
-      background-color: var(--ink);
-      color: var(--line);
+.site-footer {
+    margin-top: 2rem;
+    background: var(--ink);
+    color: var(--plain);
+    /* #c9d1da; */
+    padding: 1.5rem 0;
+}
 
-    }
+.site-footer a {
+    color: #fff;
+}
 
-    .logo {
-      font-weight: 700;
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-size: 1.5rem;
-    }
+.intro {
+    background: var(--panel);
+    margin: 1.5rem 0;
+    padding: 2rem 1.25rem;
+    border-radius: 0.5rem;
+}
 
-    nav a {
-      font-weight: 700;
-      color: var(--line);
+.intro h1 {
+    margin-top: 0;
+}
 
-    }
+.button {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 700;
+}
 
-    .site-footer {
-      margin-top: 2rem;
-      padding: 0.5rem 0;
-      background-color: var(--ink);
-      color: var(--line);
-      line-height: 2;
+.button:hover {
+    background: var(--tea);
+}
+
+table {
+    width: 100%;
+    background: #fff;
+    border-collapse: collapse;
+}
+
+caption {
+    padding: 0.5rem 0;
+    font-weight: 700;
+    text-align: left;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+thead th {
+    background: var(--ink);
+    color: #fff;
+}
+
+.site-header .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.5rem;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.speaker-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.speaker {
+    padding: 1.25rem;
+    text-align: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 0.5rem;
+}
+
+.speaker img {
+    width: 8rem;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.speaker h3 {
+    margin: 0.75rem 0 0.25rem;
+}
+
+form {
+    max-width: 36rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+/* attribute selector */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--ink);
+    background: #fff;
+    border: 2px solid var(--muted);
+    border-radius: 0.5rem;
+}
+
+fieldset {
+    margin: 0 0 1rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--line);
+    border-radius: 0.5rem;
+}
+
+legend {
+    padding: 0 0.25rem;
+    font-weight: 700;
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+}
+
+.choice label {
+    margin: 0;
+    font-weight: 400;
+}
+
+input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0;
+}
+
+button {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--tea);
+}
+
+@media (min-width: 48em) {
+    h1 {
+        font-size: 3.5rem;
     }
 
     .intro {
-      background-color: var(--panel);
-      margin: 1.5rem 0rem;
-      padding: 2rem 1.25rem;
-      border-radius: 0.5rem;
-    }
-
-    .intro h1 {
-      margin-top: 0;
-    }
-
-    .button {
-      display: inline-block;
-      background-color: var(--accent);
-      color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .button:hover {
-      background-color: #ebb09b;
-      color: #541701;
-      font-weight: 700;
-    }
-
-    table {
-      width: 100%;
-      background-color: #fff;
-      border-collapse: collapse;
-    }
-
-    caption {
-      padding: 0.7rem 0rem;
-      font-weight: 700;
-      text-align: left;
-    }
-
-    th,
-    td {
-      border-bottom: 1px solid var(--line);
-      padding: 0.6rem;
-      text-align: left;
-    }
-
-    thead th {
-      background-color: var(--ink);
-      color: #fff;
+        padding: 3rem;
     }
 
     .speaker-grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 1.5rem;
-    }
-
-    .speaker {
-      padding: 1.25rem;
-      background-color: var(--panel);
-      text-align: center;
-      border: 1px solid var(--line);
-      border-radius: 0.5rem;
-    }
-
-    .speaker img {
-      width: 8rem;
-      border-radius: 50%;
-      margin: 0 auto;
-    }
-
-    .speaker h3 {
-
-      margin: 0.5rem 0 0.25rem;
-    }
-
-    @media (min-width: 48em) {
-      h1 {
-        font-size: 3.5rem;
-      }
-
-      .intro {
-        padding: 3rem;
-      }
-
-      .speaker-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      button {
-        width: auto;
-      }
-    }
-
-    @media (min-width: 64em) {
-      .speaker-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    form {
-      max-width: 20rem;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.25rem;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea {
-      width: 100%;
-      min-height: 35px;
-      padding: 0.75rem;
-      font-family: inherit;
-      font-size: 1rem;
-      color: var(--ink);
-      background-color: var(--paper);
-      border: 2px solid var(--muted);
-      border-radius: 0.5em;
-    }
-
-    fieldset {
-      margin: 0 0 1rem;
-      padding: 0rem 1rem;
-      border: 2px solid var(--line);
-      border-radius: 0.5rem;
-
-    }
-
-    fieldset legend {
-      padding: 0 0.25rem;
-      font-weight: 700;
-
-    }
-
-    .choice {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-
-    }
-
-    .choice label {
-      margin: 0;
-      font-weight: 400;
-    }
-
-    input[type="radio"] {
-      width: 1.25rem;
-      height: 1.25rem;
-      margin: 0;
     }
 
     button {
-      width: 100%;
-      min-height: 35px;
-      padding: 0.75rem;
-      font-family: inherit;
-      font-size: 1rem;
-      border-radius: 0.5rem;
-      background-color: var(--accent);
-      color: var(--paper);
-      cursor: pointer;
-      border: 0;
-      font-weight: 700;
+        width: auto;
     }
+}
 
-    button:hover {
-      background-color: #ebb09b;
-      color: #541701;
-      font-weight: 700;
+@media (min-width: 64em) {
+    .speaker-grid {
+        grid-template-columns: repeat(4, 1fr);
     }
+}
 
-    .countdown {
-      font-weight: 700;
-      color: #541701;
-    }
+.countdown {
+    font-weight: 700;
+    color: var(--tea);
+}
 
-    .schedule-summary {
-      color: #541701;
-    }
+.schedule-summary {
+    color: var(--muted);
+}
 
-    .nav-toggle {
-      display: none;
-      min-height: 44px;
-      padding: 0.5rem 1rem;
-      font: inherit;
-      font-weight: 700;
-      color: #fff;
-      background: transparent;
-      border: 2px solid #fff;
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
+/* 15. Menu button (Session 3) ----------------------------------
+   Without JavaScript the nav shows, exactly as in Lesson 3.
+   script.js puts class "js" on <html>; only then is the nav
+   collapsed behind the button. Never hide something with CSS
+   that only JavaScript can bring back.                         */
+.nav-toggle {
+    display: none;
+    min-height: 44px;
+    padding: 0.5rem 1rem;
+    font: inherit;
+    font-weight: 700;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
 
+.js .nav-toggle {
+    display: block;
+}
+
+.js nav {
+    display: none;
+    width: 100%;
+    /* a row of its own under the logo */
+}
+
+.js nav.is-open {
+    display: block;
+}
+
+.js nav ul {
+    flex-direction: column;
+}
+
+@media (min-width: 48em) {
     .js .nav-toggle {
-      display: block;
+        display: none;
     }
 
     .js nav {
-      display: none;
-      width: 100%;
-      /* a row of its own under the logo */
-    }
-
-    .js nav.is-open {
-      display: block;
+        display: block;
+        width: auto;
     }
 
     .js nav ul {
-      flex-direction: column;
-    }
-
-    @media (min-width: 48em) {
-      .js .nav-toggle {
-        display: none;
-      }
-
-      .js nav {
-        display: block;
-        width: auto;
-      }
-
-      .js nav ul {
         flex-direction: row;
-      }
     }
+}
 
-    .tab-steps {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 1rem;
-      padding: 0 1.5rem;
-    }
-
-    .tab-steps button {
-      width: auto;
-      min-width: 10rem;
-      padding: 0.85rem 1.5rem;
-      background-color: var(--accent);
-      color: var(--paper);
-      border: none;
-      border-radius: 0.5rem;
-      font-family: inherit;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .tab-steps button:hover {
-      background-color: #ebb09b;
-      color: #541701;
-    }
-
-    /* 17. Route buttons (Session 4) --------------------------------
+/* 17. Route buttons (Session 4) --------------------------------
    script.js builds the buttons and moves the indicator. CSS only
    says how things look and how long a move takes.               */
-    .tab-list {
-      position: relative;
-      /* the indicator is placed inside this */
-      display: flex;
-      border-bottom: 2px solid var(--line);
-      
-    }
+.tab-list {
+  position: relative;       /* the indicator is placed inside this */
+  display: flex;
+  border-bottom: 2px solid var(--line);
+}
 
-    .tab-list button {
-      flex: 1;
-      /* equal widths, however many buttons */
-      min-height: 44px;
-      padding: 0.5rem;
-      font: inherit;
-      font-weight: 700;
-      color: var(--muted);
-      background: transparent;
-      border: 0;
-      cursor: pointer;
-    }
+.tab-list button {
+  flex: 1;                  /* equal widths, however many buttons */
+  min-height: 44px;
+  padding: 0.5rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
 
-    /* the state lives in the HTML (aria-pressed); CSS styles the state */
-    .tab-list button[aria-pressed="true"] {
-      color: var(--accent);
-    }
+/* the state lives in the HTML (aria-pressed); CSS styles the state */
+.tab-list button[aria-pressed="true"] {
+  color: var(--accent);
+}
 
-    /* JavaScript sets its width and its transform; the transition
+/* JavaScript sets its width and its transform; the transition
    animates every change of transform                           */
-    .tab-indicator {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      height: 4px;
-      background: var(--accent);
-      transition: transform 0.3s ease;
-    }
+.tab-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 4px;
+  background: var(--accent);
+  transition: transform 0.3s ease;
+}
 
-    .tab-panel {
-      padding: 1.25rem;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-top: 0;
-    }
+.tab-panel {
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 0;
+}
 
-    /* Previous at one end, Next at the other */
-    
+/* Previous at one end, Next at the other */
+.tab-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
 
-    .tab-steps button {
-      min-height: 44px;
-      padding: 0.5rem 1rem;
-      font: inherit;
-      font-weight: 700;
-      color: var(--ink);
-      background: #fff;
-      border: 2px solid var(--muted);
-      border-radius: 0.5rem;
-      cursor: pointer;
-    }
+.tab-steps button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--muted);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      .tab-indicator {
-        transition: none;
-      }
-    }
+@media (prefers-reduced-motion: reduce) {
+  .tab-indicator {
+    transition: none;
+  }
+}
+
+.ticker {
+  padding: 0.75rem 1rem;
+  background: var(--panel);
+  border-radius: 0.5rem;
+}
+
+.ticker-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.ticker-window {
+  height: 3rem;
+  overflow: hidden;         /* the mask: only one headline shows */
+}
+
+.ticker-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: transform 0.5s ease;
+}
+
+.ticker-track li {
+  display: flex;
+  flex: 0 0 100%;           /* each headline is one window tall */
+  align-items: center;
+  line-height: 1.3;
+}
+
+.ticker-next {
+  margin-top: 0.5rem;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid var(--muted);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    transition: none;
+  }
+}

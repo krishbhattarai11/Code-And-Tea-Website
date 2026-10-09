@@ -6,6 +6,7 @@ function dayUntil(eventDate, today) {
     const diff = eventDate - today;
     return Math.ceil(diff / mPerDay);
 }
+
 const eventTime = document.querySelector("#intro time").dateTime;
 const eventDate = new Date(eventTime);
 const days = dayUntil(eventDate, new Date());
@@ -151,3 +152,50 @@ document.querySelector(".tab-next").addEventListener("click",() => {
 });
 
 showTab(0);
+
+
+
+class Ticker {
+    constructor(root) {
+        this.track = root.querySelector(".ticker-track");
+        this.count = this.track.children.length;
+        this.position = 0;
+
+        const firstCopy = this.track.firstElementChild.cloneNode(true);
+        firstCopy.setAttribute("aria-hidden", "true");
+        this.track.append(firstCopy);
+
+        const button = root.querySelector(".ticker-next");
+        button.addEventListener("click", () => this.next());
+    }
+
+    next() {
+        if (this.position === this.count) {
+            return;
+        }
+
+        this.track.style.transition = "";
+
+        this.moveTo(this.position + 1);
+        
+        if (this.position === this.count) {
+            setTimeout(() => {
+                this.track.style.transition = "none";
+                // this.position = 0;
+                // this.track.style.transform = "translateY(0%)";
+
+                // this.track.offsetHeight;
+
+                // this.track.style.transition = "";
+                this.moveTo(0);
+            }, 500);
+        }
+    }
+
+    moveTo(index) {
+        this.position = index;
+        this.track.style.transform = `translateY(-${this.position * 100}%)`;
+    }
+}
+
+const ticker = new Ticker(document.querySelector(".ticker"));
